@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Romaji Popup – Cài đặt</title>
+<style>
+  body{font:15px/1.6 system-ui,sans-serif;max-width:560px;margin:36px auto;padding:0 20px;color:#1c2430}
+  h1{font-size:20px;margin-bottom:4px}
+  h2{font-size:16px;margin:26px 0 6px}
+  label.opt{display:block;margin:6px 0}
+  textarea{width:100%;box-sizing:border-box;height:220px;padding:9px 10px;font:14px/1.5 ui-monospace,Consolas,monospace;border:1.5px solid #cfd6df;border-radius:8px;resize:vertical}
+  input[type=password]{width:100%;box-sizing:border-box;padding:9px 10px;font:14px monospace;border:1.5px solid #cfd6df;border-radius:8px}
+  button{margin-top:12px;padding:8px 18px;border:0;border-radius:8px;background:#1f6fa3;color:#fff;font:600 14px system-ui;cursor:pointer}
+  button.ghost{background:#eef2f6;color:#1c2430;margin-right:8px}
+  small{color:#6b7686;display:block;margin-top:8px}
+  #st{margin-left:10px;color:#1a9d5b}
+  #keybox{margin-top:10px}
+  code{background:#eef2f6;padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+  <h1>Romaji Popup</h1>
+
+  <h2>Từ vựng của bạn</h2>
+  <small>Mỗi dòng một từ, dạng <code>tiếng Việt = romaji</code>. Có thể dùng <code>=</code>, <code>|</code>, dấu phẩy hoặc Tab. Nhiều nghĩa tiếng Việt thì ngăn bằng <code>/</code>. Dòng bắt đầu bằng <code>#</code> là ghi chú.</small>
+  <textarea id="v" spellcheck="false" placeholder="sinh nhật = tanjoubi&#10;xin chào / chào bạn = konnichiwa&#10;cảm ơn = arigatou"></textarea>
+  <button class="ghost" id="imp">Nhập từ file…</button><span id="cnt"></span>
+  <input type="file" id="f" accept=".txt,.csv,.tsv" hidden>
+  <label class="opt" style="margin-top:12px"><input type="checkbox" id="vo"> Chỉ dùng từ vựng của tôi (không gọi dịch khi không tìm thấy)</label>
+
+  <h2>Hiển thị</h2>
+  <label class="opt"><input type="checkbox" id="hp"> Ẩn popup: bôi đen không hiện gì, nhấn chuột phải 1 lần để tự chép romaji</label>
+  <small>Ở chế độ này extension chép hoàn toàn im lặng, không hiện gì cả.</small>
+
+  <h2>Khi từ không có trong danh sách</h2>
+  <label class="opt"><input type="radio" name="p" value="google" checked> Google Dịch (miễn phí, không cần key)</label>
+  <label class="opt"><input type="radio" name="p" value="claude"> Claude (cần API key và credit)</label>
+  <div id="keybox">
+    <label for="k">Anthropic API key</label>
+    <input id="k" type="password" placeholder="sk-ant-..." autocomplete="off">
+  </div>
+
+  <button id="s">Lưu</button><span id="st"></span>
+  <small>Cách dùng: bôi đen tiếng Việt, romaji hiện ngay bên dưới. Nhấn chuột phải 1 lần để chép.</small>
+  <script src="options.js"></script>
+</body>
+</html>
